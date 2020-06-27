@@ -1,15 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-const Home = () => {
-  return (
-    <div>
-      <h1>Home!</h1>
-    </div>
-  );
-};
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import About from './components/About'
+import Home from './components/Home'
+import Login from './components/Login'
+import Navbar from './components/Navbar'
+import Signup from './components/Signup'
+import Messages from './components/Messages'
 
 ReactDOM.render(
-  <Home />,
+  <Router>
+    <React.Fragment>
+      <Navbar />
+      <Route exact path="/" render={Home} />
+      <Route exact path="/about" render={About} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/signup" component={Signup} />
+      <Route exact path="/messages" component={Messages}/>
+    </React.Fragment>
+  </Router>
+  
+  ,
   document.getElementById('root')
 );
